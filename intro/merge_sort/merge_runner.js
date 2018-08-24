@@ -1,7 +1,6 @@
 var merge = require('./merge_sort')
 mergeObject = new merge()
 mergeObject.createArray(10)
-mergeObject.currentArray()
 mergeObject.mergeSort(mergeObject.array)
 console.log("post sorting")
 console.log(mergeObject.currentArray())

@@ -8,6 +8,7 @@ class mergeObject {
     for (let i  = 0; i < length;i++) {
       this.array[i] = (Math.floor(Math.random() * 10000))
     }
+    console.log(this.array)
   }
   
   currentArray() {
@@ -19,6 +20,8 @@ class mergeObject {
     let middlePointer = Math.floor(array.length / 2)
     let leftArray = array.slice(0, middlePointer)
     let rightArray = array.slice(middlePointer, array.length)
+
+    console.log(`array before recursion = ${array}`)
     if (array.length === 1) {
       return
     }
@@ -34,8 +37,6 @@ class mergeObject {
 function sortDividedArrays(leftArray, rightArray, array) {
   let rightIndex = leftIndex = count = 0;
   while (rightIndex < rightArray.length && leftIndex < leftArray.length) {
-    console.log(`left index = ${leftIndex}: ${leftArray[leftIndex]}, right index = ${rightIndex}: ${rightArray[rightIndex]}`)
-    console.log(`left array = ${leftArray}, right array = ${rightArray}`)
     console.log(`count = ${count}`)
     console.log(`array = ${array}`)
     if (leftArray[leftIndex] < rightArray[rightIndex]) {
@@ -48,7 +49,6 @@ function sortDividedArrays(leftArray, rightArray, array) {
     }
     count++
     console.log(`array after = ${array}`)
-    console.log('\n\n')
   }
 
   for (rightIndex; rightIndex < rightArray.length;  rightIndex++) {
@@ -60,7 +60,12 @@ function sortDividedArrays(leftArray, rightArray, array) {
     array[count] = leftArray[leftIndex]
     count++
   }
-  console.log( array)
+
+  console.log(`array leaving function = ${array}`)
+  console.log('\n\n')
+
+
+
 }
 
 

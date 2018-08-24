@@ -1,0 +1,22 @@
+{
+  "name": "stanf-alg",
+  "version": "1.0.0",
+  "description": "stanford algorithms class + additional learning",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daniel57910/stanford-algs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daniel57910/stanford-algs/issues"
+  },
+  "homepage": "https://github.com/Daniel57910/stanford-algs#readme",
+  "dependencies": {
+    "jest": "^23.5.0"
+  }
+}

@@ -6,6 +6,6 @@ describe('Recursive super digit calculator', () => {
     digitCalculator = new digit()
   })
   it('aggregates the sum of the integers', () => {
-    expect(digitCalculator.digitSum(9999)).toEqual(36)
+    expect(digitCalculator.digitSum(9999)).toEqual(9)
   })
 })

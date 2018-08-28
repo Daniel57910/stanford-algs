@@ -1,12 +1,14 @@
 class Digit {
 
   digitSum(n) {
-    return addTheDigits(0, n)
+    console.log(n)
+    if (n < 10) {return n}
+    return this.digitSum(addTheDigits(n))
   }
 
 }
 
-function addTheDigits(x = 0, n) {
+function addTheDigits( n) {
   return (n.toString().split('').map(x => Number(x)).reduce((a, b) => a + b))
 }
 

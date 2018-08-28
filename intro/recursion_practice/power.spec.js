@@ -8,6 +8,5 @@ describe('Test Power', () => {
     expect(powerCalculator.powerSum(10, 2)).toEqual(1)
     expect(powerCalculator.powerSum(100, 2)).toEqual(3)
     expect(powerCalculator.powerSum(100, 3)).toEqual(1)
-
   })
 })

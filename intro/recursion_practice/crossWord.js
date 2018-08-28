@@ -3,7 +3,7 @@ class Game {
   
   crosswordPuzzle(crossword, words) {
     this.crossword = crossword
-    solve(0, 0, crossword, words)
+    solve(0, 0, crossword, words[0])
     console.log(this.crossword)
   }
   
@@ -33,14 +33,4 @@ function solve(y, x, crossword, word) {
 
 }
 
-function validMoves(crossword) {
-  for (i = 0; i < 3; i++) {
-    for (j = 0; j < 3; j++) {
-      if (crossword[j][i] === "-") {
-        return true
-      }
-    }
-  }
-  return false
-}
 module.exports = Game

@@ -10,8 +10,8 @@ describe('basic crossword with one word', () => {
     game.crosswordPuzzle(crossWord, 'dog')
   })
   it('generates a crossWord to be recursively filled out', () => {
-    expect(game.crossword[0]).toEqual(['X', 'X', '!'])
-    expect(game.crossword[1]).toEqual(['X', 'X', '!'])
-    expect(game.crossword[1]).toEqual(['X', 'X', '!'])
+    expect(game.crossword[0]).toEqual(['X', 'X', 'd'])
+    expect(game.crossword[1]).toEqual(['X', 'X', 'o'])
+    expect(game.crossword[2]).toEqual(['X', 'X', 'g'])
   })
 })

@@ -1,5 +1,5 @@
 var incorrectBasic = "johnny123"
-var incorrectAttempt = "john"
+var basicAttempt = "john"
 
 module.exports.incorrectBasic = incorrectBasic
-module.exports.incorrectAttempt = incorrectAttempt
+module.exports.basicAttempt = basicAttempt 

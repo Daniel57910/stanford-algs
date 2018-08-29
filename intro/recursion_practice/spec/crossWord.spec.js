@@ -1,4 +1,4 @@
-const wordGame = require('./crossWord')
+const wordGame = require('../crossWord')
 
 describe('basic crossword with one word', () => {
   beforeEach(() => {

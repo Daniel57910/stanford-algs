@@ -1,4 +1,4 @@
-const testPower = require ('./power')
+const testPower = require ('../power')
 
 describe('Test Power', () => {
   beforeEach(() => {

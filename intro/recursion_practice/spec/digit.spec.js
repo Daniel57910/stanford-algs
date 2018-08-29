@@ -1,4 +1,4 @@
-const digit = require('./digit')
+const digit = require('../digit')
 
 
 describe('Recursive super digit calculator', () => {

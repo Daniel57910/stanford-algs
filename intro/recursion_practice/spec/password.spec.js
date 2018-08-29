@@ -1,6 +1,10 @@
 const password = require('../password')
-const {square, bang, a} = require('./helperFunctions') 
+const {incorrectBasic, incorrectAttempt} = require('./helperFunctions') 
 
-bang()
-square(10)
-console.log(a)
+describe('simple password of array one length', () => {
+  it('returns wrong password if there is no match', () => {
+    let passwordCalculator = new password()
+    expect(passwordCalculator.passwordCracker(incorrectBasic, incorrectAttempt)).toEqual("WRONG PASSWORD")
+    
+  })
+})

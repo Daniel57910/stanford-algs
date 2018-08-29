@@ -1,13 +1,5 @@
-function bang() {
-  console.log('BANG')
-}
+var incorrectBasic = "johnny123"
+var incorrectAttempt = "john"
 
-function square(x) {
-  console.log(x * x);
-}
-
-var a = "aaaaa"
-
-module.exports.bang = bang
-module.exports.square = square
-module.exports.a = a
+module.exports.incorrectBasic = incorrectBasic
+module.exports.incorrectAttempt = incorrectAttempt

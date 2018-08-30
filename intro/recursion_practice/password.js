@@ -4,35 +4,33 @@ class Password {
     attempt = attempt.split(' ')
     let passChecker = pass
     let passWordArray = []
-    return solve(pass, passChecker, attempt, passWordArray)
-    
+    return solve(pass, passChecker, attempt, passWordArray, 0)
   }
 
 }
 
-function solve(passWord, passChecker, attempt, passWordArray) {
+function solve(passWord, passChecker, attempt, passWordArray, index) {
 
-  if (passWordArray.join("") === passWord) {
-    console.log(`password Array is correct ${passWordArray}`)
-    return passWordArray.join("")
+ //console.log(`password = ${passWord}, checker = ${passChecker}`)
+  //console.log(`attempt = ${attempt}, passWordArray = ${passWordArray}, at index ${index} ${attempt[index]}`)
+  //console.log(`comparing ${attempt[index]} with ${sliceWord(passChecker, attempt[index])}`)
+
+  if (passWordArray.join('') === passWord) {
+    return passWordArray.join(" ")
   }
 
-  for (currentWord of attempt) {
-    console.log(`current word is ${currentWord}`)
-
-    if (currentWord === passChecker) {
-      passWordArray.unshift(currentWord)
-      return passWordArray.join("")
-
-    }
-    if (isAMatch(passChecker, currentWord)) {
-      console.log(`match between ${passChecker} + ${currentWord}`)
-      passWordArray.unshift(currentWord)
-      return solve(passWord, sliceWord(passChecker, currentWord), attempt, passWordArrray)
-    }
+  if (index === attempt.length) {
+    return "WRONG PASSWORD"
   }
 
-  return "WRONG PASSWORD"
+  if (isAMatch(passChecker, attempt[index]) || attempt[index] === passChecker) {
+    passWordArray.unshift(attempt[index])
+    passChecker = passChecker.slice(0, passChecker.length - attempt[index].length)
+    return solve(passWord, passChecker, attempt, passWordArray, 0)
+  }
+  else {
+    return solve(passWord, passChecker, attempt, passWordArray, index + 1)
+  }
 
 }
 
@@ -41,7 +39,9 @@ function isAMatch(passChecker, currentWord) {
 }
 
 function sliceWord(passChecker, currentWord) {
-  return passChecker.substring(currentWord.length, passChecker.length)
+  let word =  passChecker.slice(passChecker.length - currentWord.length, passChecker.length)
+  //console.log(`word thats returned is ${word}`)
+  return word
 }
 
 module.exports = Password

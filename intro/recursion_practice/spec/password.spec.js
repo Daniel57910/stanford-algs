@@ -32,4 +32,16 @@ describe('string of > 2 attempts in unsorted order with multiples', () => {
     let password = "thebigdogisabigdoginthehouse"
     expect(passwordCalculator.passwordCracker(password, attempt)).toEqual(correct)
   })
+  it('returns the string if password.length = 1 but string is several', () => {
+    let correct = "hamilton"
+    let attempt = "fish in the sea hamilton mark joe"
+    expect(passwordCalculator.passwordCracker(correct, attempt)).toEqual(correct)
+  })
+  it('returns the correct password if words are subsets of larger words', () => {
+    let password = "fisheriesintheland"
+    let attempt = "ries in the land fisheries"
+    let correct = "fisheries in the land"
+    expect(passwordCalculator.passwordCracker(password, attempt)).toEqual(correct)
+  })
 })
+

@@ -1,7 +1,7 @@
 class Password {
   
   passwordCracker(pass, attempt) {
-    attempt = attempt.split(' ')
+    attempt = sortWords(attempt)
     let passChecker = pass
     let passWordArray = []
     return solve(pass, passChecker, attempt, passWordArray, 0)
@@ -37,6 +37,10 @@ function isAMatch(passChecker, currentWord, index1, index2) {
 
 function sliceWord(passChecker, index1, index2) {
   return passChecker.slice(index1, index2)
+}
+
+function sortWords(words) {
+  return words.split(' ').sort((a, b) => a.length < b.length)
 }
 
 module.exports = Password

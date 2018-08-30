@@ -13,11 +13,23 @@ describe('simple solution where only one password is checked', () => {
   })
 })
 
-describe('string of > 2 attempts in order of password', () => {
+describe('string of > 2 attempts in order that matches password', () => {
   beforeEach(() => {
     passwordCalculator = new password()
   })
   it('returns the attempt if it matches the password', () => {
     expect(passwordCalculator.passwordCracker(test2password, test2attempt)).toEqual(test2attempt)
+  })
+})
+
+describe('string of > 2 attempts in unsorted order with multiples', () => {
+  beforeEach(() => {
+    passwordCalculator = new password()
+  })
+  it('returns the correct password for a unsorted word string with multiples', () => {
+    let correct = "the big dog is a big dog in the house"
+    let attempt = "dog a house big the in is"
+    let password = "thebigdogisabigdoginthehouse"
+    expect(passwordCalculator.passwordCracker(password, attempt)).toEqual(correct)
   })
 })

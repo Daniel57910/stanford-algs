@@ -11,10 +11,7 @@ class Password {
 
 function solve(passWord, passChecker, attempt, passWordArray, index) {
 
- //console.log(`password = ${passWord}, checker = ${passChecker}`)
-  //console.log(`attempt = ${attempt}, passWordArray = ${passWordArray}, at index ${index} ${attempt[index]}`)
-  //console.log(`comparing ${attempt[index]} with ${sliceWord(passChecker, attempt[index])}`)
-
+ 
   if (passWordArray.join('') === passWord) {
     return passWordArray.join(" ")
   }
@@ -39,9 +36,7 @@ function isAMatch(passChecker, currentWord) {
 }
 
 function sliceWord(passChecker, currentWord) {
-  let word =  passChecker.slice(passChecker.length - currentWord.length, passChecker.length)
-  //console.log(`word thats returned is ${word}`)
-  return word
+  return passChecker.slice(passChecker.length - currentWord.length, passChecker.length)
 }
 
 module.exports = Password

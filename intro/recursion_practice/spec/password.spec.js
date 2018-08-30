@@ -8,4 +8,8 @@ describe('simple solution where only one password is checked', () => {
   it('returns wrong password if there is no match', () => {
     expect(passwordCalculator.passwordCracker(incorrectBasic, basicAttempt)).toEqual("WRONG PASSWORD")
   })
+  it('returns the string if the word is a match', () => {
+    expect(passwordCalculator.passwordCracker(basicAttempt, basicAttempt)).toEqual(basicAttempt)
+  })
+
 })

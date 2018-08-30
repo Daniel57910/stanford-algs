@@ -1,4 +1,4 @@
-const Pass = require('./password')
+const Password = require('./password')
+let pass = new Password()
+pass.passwordCracker('johnlukemarkhamilton', 'john luke mark hamilton mike')
 
-let passwordChecker = new Pass()
-passwordChecker.passwordCracker('john', 'luke mark hamilton')

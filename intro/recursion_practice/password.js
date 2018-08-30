@@ -14,10 +14,11 @@ function solve(passWord, passChecker, attempt, passWordArray, index) {
   if (passWordArray.join('') === passWord) { return passWordArray.join(" ") }
   
   if (index === attempt.length) { return "WRONG PASSWORD" }
+  let distance = subtractDistance(passChecker, attempt[index])
 
-  if ( isAMatch(passChecker, attempt[index], subtractDistance(passChecker, attempt[index]), passChecker.length ) || attempt[index] === passChecker) {
+  if (isAMatch(passChecker, attempt[index], distance, passChecker.length) || attempt[index] === passChecker) {
     passWordArray.unshift(attempt[index])
-    return solve(passWord, sliceWord(passChecker, 0, subtractDistance(passChecker, attempt[index])), attempt, passWordArray, 0)
+    return solve(passWord, sliceWord(passChecker, 0, distance), attempt, passWordArray, 0)
   }
   else {
     return solve(passWord, passChecker, attempt, passWordArray, index + 1)

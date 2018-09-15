@@ -1,6 +1,7 @@
 class Password {
   
   passwordCracker(pass, attempt) {
+    debugger
     attempt = sortWords(attempt)
     let passChecker = pass
     let passWordArray = []

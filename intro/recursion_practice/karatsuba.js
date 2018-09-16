@@ -19,10 +19,10 @@ class Karatsuba {
     }
     firstNum = firstNum.toString()
     secondNum = secondNum.toString()
-    let firstHigh = firstNum.slice(0, firstNum.length / 2)
-    let secondHigh = secondNum.slice(0, secondNum.length / 2)
-    let firstLow = firstNum.slice(firstNum.length / 2, firstNum.length)
-    let secondLow = secondNum.slice(secondNum.length / 2, secondNum.length)
+    let firstHigh = parseInt(firstNum.slice(0, firstNum.length / 2))
+    let secondHigh = parseInt(secondNum.slice(0, secondNum.length / 2))
+    let firstLow = parseInt(firstNum.slice(firstNum.length / 2, firstNum.length))
+    let secondLow = parseInt(secondNum.slice(secondNum.length / 2, secondNum.length))
     console.log(`firstHigh is ${firstHigh}, secondHigh is ${secondHigh}`)
     console.log(`firstLow is ${firstLow}, secondLow is ${secondLow}`)
 

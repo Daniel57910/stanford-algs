@@ -1,4 +1,4 @@
 const karatsuba = require('./karatsuba')
 
 let karats = new karatsuba()
-karats.multiply(1244, 4510)
+console.log(karats.multiply(1234, 4321))

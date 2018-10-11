@@ -2,30 +2,34 @@ class Karatsuba {
 
   multiply(firstNum, secondNum) {
 
-    firstNum = firstNum.toString()
-    secondNum = secondNum.toString()
-    
+    // console.log(`firstNum is ${firstNum}, secondNum is ${secondNum}`)
+
     if (firstNum < 10 || secondNum < 10) {
-      return firstNum * secondNum
-    }
+       return firstNum * secondNum
+     }
 
-  
+     var first = firstNum.toString()
+     var second = secondNum.toString()
+     var length = (first.length > second.length ? first.length : second.length)
+     console.log(length)
+     var subLeng = Math.round(length / 2)
     
-    let firstHigh = firstNum.slice(0, firstNum.length / 2)
-    let firstLow = firstNum.slice(firstNum.length / 2, firstNum.length)
-    let secondHigh = secondNum.slice(0, secondNum.length / 2)
-    let secondLow = secondNum.slice(secondNum.length / 2, secondNum.length)
 
-    let summedFirst = parseInt(firstHigh) + parseInt(firstLow)
-    let summedSecond = parseInt(secondHigh) + parseInt(secondLow)
-    let a = this.multiply(firstHigh, secondHigh)
-    let b = this.multiply(firstLow, secondLow)
-    let c = this.multiply(summedFirst, summedSecond) - a - b
-    a *= Math.pow(10, firstNum.length)
-    c *= Math.pow(10, firstNum.length / 2)
-    let d = a + b + c
-    console.log(d)
-    return d
+     let firstHigh = parseInt(first.substring(0, first.length - subLeng))
+     let secondHigh = parseInt(second.substring(0, second.length - subLeng))
+     let firstLow = parseInt(first.substring(first.length - subLeng, first.length))
+     let secondLow = parseInt(second.substring(second.length - subLeng, second.length))
+
+     console.log(`firstHigh = ${firstHigh}, secondHigh = ${secondHigh}`)
+     console.log(`firstLow = ${firstLow}, secondLow = ${secondLow}`)
+
+     let a = this.multiply(firstHigh, secondHigh)
+     let b = this.multiply(firstLow, secondLow)
+     let c = this.multiply(firstHigh + firstLow, secondHigh + secondLow) - (a + b)
+     let d = (a * Math.pow(10, 2 * subLeng)) + (c * Math.pow(10, subLeng)) + b
+ 
+   console.log(`a is ${a}, b is ${b}, c is ${c}, d is ${d}`)
+   return d
   }
 
 }

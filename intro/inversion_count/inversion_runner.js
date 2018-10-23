@@ -1,4 +1,4 @@
-const inversion = require('./inversion_2')
+const inversion = require('./inversion')
 var inversion_count = inversion.inversion
 
 let array = [1, 3, 9, 2, 1, 5, 6]

@@ -15,9 +15,9 @@ function inversion_count(array) {
 }
 
 function count_and_sort(leftArray, rightArray, array) {
-   let rightIndex = leftIndex = count = 0;
+   let rightIndex = leftIndex = count = 0
+
    while (rightIndex < rightArray.length && leftIndex < leftArray.length) {
-     
      if (leftArray[leftIndex] < rightArray[rightIndex]) {
        array[count] = leftArray[leftIndex]
        leftIndex++

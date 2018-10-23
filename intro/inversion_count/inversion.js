@@ -3,6 +3,7 @@ function inversion_count(array) {
   if (array.length === 1) {
     return 0
   }
+  let countSwap = 0
 
   let middlePointer = Math.floor(array.length / 2)
   let leftArray = array.slice(0, middlePointer)
@@ -10,12 +11,17 @@ function inversion_count(array) {
 
   inversion_count(leftArray)
   inversion_count(rightArray)
-  count_and_sort(leftArray, rightArray, array)
-
+  console.log(leftArray)
+  console.log(rightArray)
+  countSwap += count_and_sort(leftArray, rightArray, array)
+  console.log(`count swap is ${countSwap}`)
+  console.log(array)
+  return countSwap
+  
 }
 
 function count_and_sort(leftArray, rightArray, array) {
-   let rightIndex = leftIndex = count = 0
+   let rightIndex = leftIndex = count = inversionCount = 0
 
    while (rightIndex < rightArray.length && leftIndex < leftArray.length) {
      if (leftArray[leftIndex] < rightArray[rightIndex]) {
@@ -23,20 +29,26 @@ function count_and_sort(leftArray, rightArray, array) {
        leftIndex++
      } else {
        array[count] = rightArray[rightIndex]
-       rightIndex++
+      inversionCount += 1 + leftIndex - rightIndex
+      console.log(`inversion count is ${inversionCount}`)
+      rightIndex++
      }
      count++
    }
 
-   for (rightIndex; rightIndex < rightArray.length; rightIndex++) {
-     array[count] = rightArray[rightIndex]
-     count++
-   }
+  for (leftIndex; leftIndex < leftArray.length; leftIndex++) {
+    array[count] = leftArray[leftIndex]
+    count++
+  }
 
-   for (leftIndex; leftIndex < leftArray.length; leftIndex++) {
-     array[count] = leftArray[leftIndex]
-     count++
-   }
+  for (rightIndex; rightIndex < rightArray.length; rightIndex++) {
+    array[count] = rightArray[rightIndex]
+    inversionCount += 1 + leftIndex - rightIndex
+    console.log(`inversion count is ${inversionCount}`)
+    count++
+  }
+
+  return inversionCount
 
 }
 

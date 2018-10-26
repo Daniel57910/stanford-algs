@@ -11,8 +11,8 @@ function inversion_count(array) {
   let rightArray = array.slice(middlePointer, array.length)
 
   inversion_count(leftArray)
-  inversion_count(rightArray)
-  count_and_sort(leftArray, rightArray, array)
+  inversion_count(rightArray) 
+  count_and_sort(leftArray, rightArray, array) 
   return inversionCount
 }
 
@@ -21,7 +21,7 @@ function count_and_sort(leftArray, rightArray, array) {
    let length = leftArray.length
 
    while (rightIndex < rightArray.length && leftIndex < leftArray.length) {
-     if (leftArray[leftIndex] < rightArray[rightIndex]) {
+     if (leftArray[leftIndex] <= rightArray[rightIndex]) {
        array[count] = leftArray[leftIndex]
        leftIndex++
      } else {
@@ -32,11 +32,12 @@ function count_and_sort(leftArray, rightArray, array) {
      count++
    }
 
-    for (rightIndex; rightIndex < rightArray.length; rightIndex++) {
-      array[count] = rightArray[rightIndex]
-      inversionCount += (length - leftIndex)
-      count++
-    }
+   for (rightIndex; rightIndex < rightArray.length; rightIndex++) {
+   //copies any additional elements into array and calculates necessary inversions if all on left side not copied in
+    array[count] = rightArray[rightIndex]
+    inversionCount += (length - leftIndex)
+    count++
+  }
 
   for (leftIndex; leftIndex < leftArray.length; leftIndex++) {
     array[count] = leftArray[leftIndex]

@@ -20,6 +20,6 @@ describe(`multiple inversions`, () => {
     inversionCount = inversionFunc.inversion
   })
   it(`returns the correct number of inversions`, () => {
-    
+    expect(inversionCount([0])).toEqual(0)
   })
 })

@@ -3,7 +3,7 @@ var inversionCount = 0
 function inversion_count(array) {
 
   if (array.length <= 1) {
-    return
+    return inversionCount
   }
 
   let middlePointer = Math.floor(array.length / 2)

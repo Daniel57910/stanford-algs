@@ -1,8 +1,12 @@
 const inversionFunc = require('../inversion')
+const reset = require('../inversion')
 
 describe('Inversion Counter', () => {
   beforeEach(() => {
     inversionCount = inversionFunc.inversion
+  })
+  afterEach(() => {
+    reset.reset
   })
   it(`returns 0 for a sorted array`, () => {
     expect(inversionCount([1, 2, 3, 4, 5, 6])).toEqual(0)

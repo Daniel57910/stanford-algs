@@ -3,7 +3,7 @@ function solve(array) {
   var inversionCount = 0
   inversion_count(array)
   return inversionCount
-  /*try with 0 passed in as arg & returned */
+
   function inversion_count(array) {
 
     if (array.length <= 1) {

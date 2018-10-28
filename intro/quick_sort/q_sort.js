@@ -6,15 +6,13 @@ function q_sort(arr) {
 
   for (let left = 0; left < arr.length; left++) {
 
-    console.log(`pivot is ${pivot}`)
     if (pivot > arr[left]) {
-      console.log(`${arr[left]} < ${pivot}`)
-      swap(arr, left, wall)
+      swap(arr, wall, left)
       wall++
     }
   }
   
-  swap(arr, arr.length - 1, wall)
+  swap(arr, wall, arr.length - 1)
   
 }
 

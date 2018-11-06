@@ -16,6 +16,8 @@ function q_sort(arr) {
 
     /*quicksort the array and retrieve the wall where Ai <= p <= Ai */
     let wall = partition(array, left, right)
+    partitions_count+=wall - 1
+    console.log(`partitions count is ${partitions_count}`)
     
     /*sort the array around all elements before the wall */
     divide(array, left, wall - 1)
@@ -31,7 +33,7 @@ function partition(arr, leftSide, RightSide) {
 
   let pivot = arr[leftSide]
 
-  /* place the partition point to the left of the pivot */
+  /* place the wall to the left of the pivot */
   let wall = leftSide + 1
 
   for (let left = leftSide + 1; left <= RightSide; left++) {

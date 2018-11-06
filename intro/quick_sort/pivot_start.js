@@ -30,6 +30,8 @@ function q_sort(arr) {
 function partition(arr, leftSide, RightSide) {
 
   let pivot = arr[leftSide]
+
+  /* place the partition point to the left of the pivot */
   let wall = leftSide + 1
 
   for (let left = leftSide + 1; left <= RightSide; left++) {
@@ -39,8 +41,10 @@ function partition(arr, leftSide, RightSide) {
     }
   }
 
-  arr[leftSide] = arr[wall - 1]
-  arr[wall - 1] = pivot
+  /*swap the pivot point with the value at wall to ensure pivot sits on the wall */
+  swap(arr, leftSide, wall - 1)
+  
+  /* return left digit next to wall so all elements recurse around the wall */
   return wall - 1
 
   }

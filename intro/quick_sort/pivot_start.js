@@ -16,7 +16,7 @@ function q_sort(arr) {
 
     /*quicksort the array and retrieve the wall where Ai <= p <= Ai */
     let wall = partition(array, left, right)
-    partitions_count+=wall - 1
+    partitions_count+= right - left
     console.log(`partitions count is ${partitions_count}`)
     
     /*sort the array around all elements before the wall */

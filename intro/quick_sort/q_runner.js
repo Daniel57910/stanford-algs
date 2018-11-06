@@ -1,13 +1,12 @@
 const q_sort = require('./pivot_start')
+var readLineSync = require('read-each-line-sync')
+var arr = []
 
-let arr = [2, 5, 1, 9, 4]
-// for (let i = 0; i < 100; i++) {
-//   arr.push(Math.floor(Math.random() * 10000))
-// }
+readLineSync('q_sort_int.txt', 'utf8', function(line) {
+  arr.push(parseInt(line))
+})
 
-q_sort(arr)
-console.log(arr)
-console.log(isSorted(arr))
+let a = q_sort(arr)
 
 function isSorted(arr) {
 
@@ -19,11 +18,9 @@ function isSorted(arr) {
   return true
 }
 
-var array = []
-for (let i = 0; i < 10; i++) {
-  array[i] = Math.floor(Math.random() * 1000)
-}
+console.log(isSorted(arr))
+console.log(a)
 
-console.log(array)
+
+var array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 q_sort(array)
-console.log(array)

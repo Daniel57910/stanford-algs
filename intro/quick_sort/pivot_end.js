@@ -25,8 +25,6 @@ function q_sort(arr) {
 
 }
 
-
-
 function partition(arr, leftSide, RightSide) {
   swap(arr, leftSide, RightSide)
   let pivot = arr[leftSide]

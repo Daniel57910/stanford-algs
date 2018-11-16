@@ -71,9 +71,6 @@ function return_median_index(left, mid, right) {
 
 function find_mid_point(array) {
   return Math.floor((array.length - 1) / 2)
-
 }
-
-
 
 module.exports = q_sort

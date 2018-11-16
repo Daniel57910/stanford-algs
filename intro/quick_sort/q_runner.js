@@ -13,38 +13,26 @@ function isSorted(arr) {
   return true
 }
 
-// var arrRight = []
-// var arrLeft = []
+var arrRight = []
+var arrLeft = []
+var arrMid = []
 
-// readLineSync('q_sort_int.txt', 'utf8', function(line) {
-//   arrRight.push(parseInt(line))
-//   arrLeft.push(parseInt(line))
-// })
+readLineSync('q_sort_int.txt', 'utf8', function(line) {
+  arrRight.push(parseInt(line))
+  arrLeft.push(parseInt(line))
+  arrMid.push(parseInt(line))
+})
 
 
-// let leftC = q_left(arrLeft)
-// let rightC = q_right(arrRight)
+let leftC = q_left(arrLeft)
+let rightC = q_right(arrRight)
+let midC = q_mid(arrMid)
 
-// console.log(isSorted(arrRight))
-// console.log(isSorted(arrLeft))
-// console.log(leftC)
-// console.log(rightC)
+console.log(isSorted(arrRight))
+console.log(isSorted(arrLeft))
+console.log(isSorted(arrMid))
+console.log(leftC)
+console.log(rightC)
+console.log(midC)
 
-big_arr_random = []
 
-for (let i = 0; i < 100000; i++) {
-  big_arr_random.push(Math.floor(Math.random() * 100))
-}
-
-let arr_end_ev = [1, 3, 9, 5, 2]
-let arr_mid_ev = [1, 8, 6, 2, 12]
-let arr_start_ev = [5, 2, 1, 6, 7, 12]
-q_mid(arr_end_ev)
-q_mid(arr_mid_ev)
-q_mid(arr_start_ev)
-q_mid(big_arr_random)
-
-console.log(arr_end_ev)
-console.log(arr_mid_ev)
-console.log(arr_start_ev)
-console.log(isSorted(big_arr_random))

@@ -16,8 +16,7 @@ function q_sort(arr) {
 
     /*quicksort the array and retrieve the wall where Ai <= p <= Ai */
     let wall = partition(array, left, right)
-    partitions_count += right - left
-
+    partitions_count += right - left 
     divide(array, left, wall - 1)
     divide(array, wall + 1, right)
 
@@ -27,8 +26,9 @@ function q_sort(arr) {
 
 function partition(arr, leftSide, RightSide) {
 
-  let midPoint = find_mid_point(arr)
+  let midPoint = Math.floor((leftSide + RightSide) / 2)
   let pivot = return_median_index(arr[leftSide], arr[midPoint], arr[RightSide])
+  let wall = leftSide + 1
 
   if (pivot === arr[midPoint]) {
     swap(arr, leftSide, midPoint)
@@ -38,9 +38,7 @@ function partition(arr, leftSide, RightSide) {
     swap(arr, leftSide, RightSide)
   }
 
-  let wall = leftSide + 1
-
-   for (let left = leftSide + 1; left <= RightSide; left++) {
+  for (let left = leftSide + 1; left <= RightSide; left++) {
      if (pivot > arr[left]) {
        swap(arr, wall, left)
        wall++
@@ -59,6 +57,7 @@ function swap(arr, current, wall) {
 }
 
 function return_median_index(left, mid, right) {
+
   let candidates = []
 
   candidates.push(left)
@@ -66,11 +65,9 @@ function return_median_index(left, mid, right) {
   candidates.push(right)
 
   candidates.sort((a, b) => { return a - b })
-  return candidates[find_mid_point(candidates)]
+  return candidates[Math.floor(candidates.length / 2)]
 }
 
-function find_mid_point(array) {
-  return Math.floor((array.length - 1) / 2)
-}
+
 
 module.exports = q_sort

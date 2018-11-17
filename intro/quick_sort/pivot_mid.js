@@ -27,14 +27,14 @@ function q_sort(arr) {
 function partition(arr, leftSide, RightSide) {
 
   let midPoint = Math.floor((leftSide + RightSide) / 2)
+  /*mid point middle point of paritioned array */
+
   let pivot = return_median_index(arr[leftSide], arr[midPoint], arr[RightSide])
   let wall = leftSide + 1
 
   if (pivot === arr[midPoint]) {
     swap(arr, leftSide, midPoint)
-  }
-
-  else if (pivot === arr[RightSide]) {
+  } else if (pivot === arr[RightSide]) {
     swap(arr, leftSide, RightSide)
   }
 
@@ -56,14 +56,7 @@ function swap(arr, current, wall) {
   arr[wall] = temp
 }
 
-function return_median_index(left, mid, right) {
-
-  let candidates = []
-
-  candidates.push(left)
-  candidates.push(mid)
-  candidates.push(right)
-
+function return_median_index(...candidates) {
   candidates.sort((a, b) => { return a - b })
   return candidates[Math.floor(candidates.length / 2)]
 }

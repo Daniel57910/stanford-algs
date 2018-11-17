@@ -24,9 +24,6 @@ readLineSync('q_sort_int.txt', 'utf8', function(line) {
 })
 
 
-// let leftC = q_left(arrLeft)
-// let rightC = q_right(arrRight)
-
 let leftC = q_left(arrLeft)
 let rightC = q_right(arrRight)
 let midC = q_mid(arrMid)

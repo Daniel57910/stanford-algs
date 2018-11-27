@@ -12,15 +12,10 @@ console.log(connections)
 
 function develop_matrix(all_nodes, connections) {
 
-  let current_row = []
-  for (let i = 0; i < all_nodes.length; i++) {
-    current_row.push(i + 1)
-  }
-  connections.push(current_row)
-  for (j = 1; j < all_nodes.length; j++) {
+  for (let col_count = 0; col_count < all_nodes.length; col_count++) {
     let current_row = []
-    for (let i = 0; i < all_nodes.length; i++) {
-      i === 0 ? current_row.push(j + 1) : current_row.push(false)
+    for (let row_count = 0; row_count < all_nodes.length; row_count++) {
+     col_count == 0 || row_count == 0 ? current_row[row_count] = Math.max(row_count, col_count) + 1 : current_row[row_count] = false
     }
     connections.push(current_row)
   }

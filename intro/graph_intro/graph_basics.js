@@ -8,11 +8,9 @@ var vertices = [[1, 2, 3, 4], [2, 4, 3, 7], [3, 1, 4, 5] [5, 6, 4, 7], [6, 5], [
 var test_vertix = [{"node" : 1, "vertex": [2, 3, 4]}, {"node": 2, "vertex": [4, 3, 7]}]
 
 let connections = []
-
 develop_boolean_matrix(all_nodes, connections)
 generate_boolean_graph(test_vertix, connections) 
 console.log(connections)
-
 
 function develop_boolean_matrix(all_nodes, connections) {
 
@@ -27,14 +25,8 @@ function develop_boolean_matrix(all_nodes, connections) {
 }
 
 function generate_boolean_graph(test_vertix, connections) {
-  for (i of test_vertix) {
-    update_graph(i.node, i.vertex, connections)
-  }
-  //update_graph(key, vertices, connections)
+  test_vertix.map((current_points) => update_graph(current_points.node, current_points.vertex, connections)) 
 }
 function update_graph(key, values, connections) {
-  for (i of values) {
-    connections[key][i] = true
-  }
+  values.map((value) => connections[key][value] = true)
 }
-

@@ -9,4 +9,6 @@ for (key in keys) {
   graph.add_to_graph(new Pair(keys[key], values[key]))
 }
 
+
 console.log(graph.node_pairs)
+console.log(graph.fuse())

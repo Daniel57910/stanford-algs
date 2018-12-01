@@ -15,5 +15,4 @@ values = [[`B`, `D`], [`D`, `A`, `C`][`D`, `B`], [`A`, `B`, `C`]]
 function generate_value_array(line) {
   return line.slice(1, line.length).map((vertex) => parseInt(vertex))
 }
-
 console.log(graph.node_pairs)

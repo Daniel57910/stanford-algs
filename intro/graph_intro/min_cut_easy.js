@@ -11,4 +11,4 @@ for (key in keys) {
 
 
 console.log(graph.node_pairs)
-console.log(graph.fuse())
+graph.fuse()

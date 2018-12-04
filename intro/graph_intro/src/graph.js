@@ -9,31 +9,52 @@ class Graph {
   }
 
   fuse() {
-    this.node_for_fusion = this.node_pairs[identify_for_fusion(this.node_pairs.length)]
-
-    if (all_vertices_have_been_fused(this.node_for_fusion.vertices)) {
-      this.node_pairs = this.node_pairs.filter((node) => node.node != this.node_for_fusion.node)
-    }
-    else {
-      this.vertex_for_fusion = this.node_for_fusion.vertices[identify_for_fusion(this.node_for_fusion.vertices.length)]
-      this.combine_nodes()
-    }
-    
+      this.find_the_nodes()
+      this.remove_the_vertex()
+      this.combine_the_nodes()
+      print_debug(this.node_pairs)
   }
 
-  combine_nodes() {
-    this.remove_opposites()
+  find_the_nodes() {
+     this.node_for_fusion = this.node_pairs[identify_for_fusion(this.node_pairs.length)]
+     this.vertex_for_fusion = this.node_for_fusion.vertices[identify_for_fusion(this.node_for_fusion.vertices.length)]
+     this.opposite_node_for_fusion = this.node_pairs.find((node) => node.node === this.vertex_for_fusion)
+  }
+
+  remove_the_vertex() {
+    this.node_for_fusion.vertices = filter_the_vertices(this.node_for_fusion.vertices, this.opposite_node_for_fusion.node)
+    this.opposite_node_for_fusion.vertices = filter_the_vertices(this.opposite_node_for_fusion.vertices, this.node_for_fusion.node)
+  }
+
+  combine_the_nodes() {
     this.node_for_fusion.node += this.vertex_for_fusion
-    this.node_for_fusion.vertices = this.node_for_fusion.vertices.filter((vertex) => vertex != this.vertex_for_fusion)
+    this.opposite_node_for_fusion.node = this.node_for_fusion.node
+    this.update_the_graph()
   }
 
-  /*first remove opposites to prevent self loops and as the graph is undirectional if AD to be fused then DA need to be fused*/
-  
-  remove_opposites() {
-    let opposite_node = this.node_pairs.find((node) => node.node === this.vertex_for_fusion)
-    opposite_node.vertices = opposite_node.vertices.filter((vertex) => vertex != this.node_for_fusion.node)
+  update_the_graph() {
+    for (let i = 0; i < this.node_pairs.length; i++)
+      if (this.node_pairs[i].node != this.node_for_fusion.node) {
+        this.node_pairs[i].vertices = update_additional_vertices(this.node_pairs[i].vertices, this.node_for_fusion.node)
+      }
+    }
   }
 
+function update_additional_vertices(vertex_array, fused_node) {
+  for (let i = 0; i < vertex_array.length; i++) {
+    if (fused_node.includes(vertex_array[i])) {
+      vertex_array[i] = fused_node
+    }
+  }
+  return [...(new Set(vertex_array.map((item) => item)))]
+}
+
+function print_debug(node_array) {
+  node_array.map((node) => console.log(`node = ${node.node} => ${node.vertices}`))
+}
+
+function filter_the_vertices(vertex_array, node){
+  return vertex_array.filter((vertex) => vertex != node)
 }
 
 function identify_for_fusion(node_pairs) {

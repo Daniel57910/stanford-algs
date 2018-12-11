@@ -14,10 +14,15 @@ class Graph {
     /*used to ensure the original state of the array does not change */
     this.node_pairs = this.original_node_pairs.map((a) => new Pair(a.node, [...a.vertices]))
     while (this.node_pairs.length > 2) {
+      /*randmly identifies the nodes for fusion*/
       this.find_the_nodes()
+      /*combines the nodes and concatenates their newly shared vertices */
       this.combine_the_nodes()
+      /*removes self loops */
       this.remove_the_vertex()
+      /*as nodes have been fused one of the fused nodes can be removed*/
       this.remove_fused_node()
+      /*updates the rest of the vertices within the graph to reflect newly created nodes, note currently n^2 operation*/
       this.update_the_graph()
     }
     print_debug(this.node_pairs, "\nafter")

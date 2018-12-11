@@ -1,23 +1,27 @@
+const Pair = require("./pair")
+
 class Graph {
 
   constructor() {
-    this.node_pairs = []
+    this.original_node_pairs = []
   }
 
   add_to_graph(pair) {
-    this.node_pairs.push(pair)
+    this.original_node_pairs.push(pair)
   }
 
   fuse() {
+    /*used to ensure the original state of the array does not change */
+    this.node_pairs = this.original_node_pairs.map((a) => new Pair(a.node, [...a.vertices]))
     while (this.node_pairs.length > 2) {
-      print_debug(this.node_pairs, "before")
       this.find_the_nodes()
       this.combine_the_nodes()
       this.remove_the_vertex()
       this.remove_fused_node()
       this.update_the_graph()
-      print_debug(this.node_pairs, "after")
     }
+    print_debug(this.node_pairs, "\nafter")
+    print_debug(this.original_node_pairs, "\noriginal")
   }
 
   find_the_nodes() {
@@ -25,16 +29,16 @@ class Graph {
      this.vertex_for_fusion = this.node_for_fusion.vertices[identify_for_fusion(this.node_for_fusion.vertices.length)]
   }
 
+  combine_the_nodes() {
+    this.node_for_fusion.node += this.vertex_for_fusion
+    this.node_for_fusion.vertices = this.node_for_fusion.vertices.concat(find_pair_for_fusing(this.node_pairs, this.vertex_for_fusion))
+  }
+
   remove_the_vertex() {
     this.node_for_fusion.vertices = [...(new Set(this.node_for_fusion.vertices.map((item) => item)))]
     this.node_for_fusion.vertices = this.node_for_fusion.vertices.filter((vertex) => !this.node_for_fusion.node.includes(vertex))
   }
-
-  combine_the_nodes() {
-    this.node_for_fusion.node += this.vertex_for_fusion
-    this.node_for_fusion.vertices =  this.node_for_fusion.vertices.concat(find_pair_for_fusing(this.node_pairs, this.vertex_for_fusion))
-  }
-
+  
   remove_fused_node() {
     this.node_pairs = this.node_pairs.filter((node) => node.node != this.vertex_for_fusion)
   }
@@ -48,7 +52,7 @@ class Graph {
 
 function update_additional_vertices(vertex_array, fused_node) {
   for (let i in vertex_array) {
-    if (fused_node.includes(vertex_array[i])) {
+    if (fused_node.includes(vertex_array[i]) || vertex_array[i].includes(fused_node)) {
       vertex_array[i] = fused_node
     }
   }

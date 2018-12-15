@@ -25,8 +25,6 @@ class Graph {
       /*updates the rest of the vertices within the graph to reflect newly created nodes, note currently n^2 operation*/
       this.update_the_graph()
     }
-    print_debug(this.node_pairs, "\nafter")
-    print_debug(this.original_node_pairs, "\noriginal")
   }
 
   find_the_nodes() {
@@ -58,11 +56,9 @@ class Graph {
     let fused_node = this.node_pairs[0].node
     let fused_opposite_node = this.node_pairs[1].node
     let count = 0
-    console.log(`${fused_node} => ${fused_opposite_node}`)
     for (let node of fused_node) {
       for (let vertex of fused_opposite_node) {
-        let original = this.original_node_pairs.find((node) => node.node === vertex).vertices.join("")
-        if (original.includes(node)) {
+        if (this.original_node_pairs.find((node) => node.node === vertex).vertices.join("").includes(node)) {
           count++
         }
       }

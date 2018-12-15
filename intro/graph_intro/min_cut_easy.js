@@ -12,5 +12,16 @@ for (let i = 0; i < keys.length; i++) {
 }
 
 
-graph.fuse()
-console.log(graph.calculate_num_cuts())
+var maximum_cuts = Math.pow(2, graph.original_node_pairs.length) - 1
+
+for (i in graph.original_node_pairs) {
+  graph.fuse()
+  if (maximum_cuts > graph.calculate_num_cuts()) {
+    maximum_cuts = graph.calculate_num_cuts()
+  }
+}
+
+console.log(`minimum cut of the graph = ${maximum_cuts}`)
+
+
+

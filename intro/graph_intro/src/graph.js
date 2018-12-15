@@ -46,24 +46,28 @@ class Graph {
   }
 
   update_the_graph() {
-    for (let i in this.node_pairs) {
-      this.node_pairs[i].vertices = update_additional_vertices(this.node_pairs[i].vertices, this.node_for_fusion.node)
+    for (let node of this.node_pairs) {
+      node.vertices = update_additional_vertices(node.vertices, this.node_for_fusion.node)
     }
   } 
 
   calculate_num_cuts() {
-    let fused_node = this.node_pairs[0].node
-    let fused_opposite_node = this.node_pairs[1].node
+    let fused_node = this.node_pairs[0].node.replace(/[^A-Z]/gi, '').split("")
+    let fused_opposite_node = this.node_pairs[1].node.replace(/[^A-Z]/gi, '').split("")
     let count = 0
     for (let node of fused_node) {
       for (let vertex of fused_opposite_node) {
-        if (this.original_node_pairs.find((node) => node.node === vertex).vertices.join("").includes(node)) {
+        if (crosses_the_border(this.original_node_pairs, node, vertex)) {
           count++
         }
       }
     }
     return count
   }
+} 
+
+function crosses_the_border(node_array, node, vertex) {
+  return node_array.find((node) => node.node === vertex).vertices.includes(node)
 }
 
 function update_additional_vertices(vertex_array, fused_node) {

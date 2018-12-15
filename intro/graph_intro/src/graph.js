@@ -14,15 +14,14 @@ class Graph {
     /*used to ensure the original state of the array does not change */
     this.node_pairs = this.original_node_pairs.map((a) => new Pair(a.node, [...a.vertices]))
     while (this.node_pairs.length > 2) {
-      /*randmly identifies the nodes for fusion*/
       this.find_the_nodes()
       /*combines the nodes and concatenates their newly shared vertices */
       this.combine_the_nodes()
-      /*removes self loops */
+      // /*removes self loops */
       this.remove_the_vertex()
-      /*as nodes have been fused one of the fused nodes can be removed*/
+      // /*as nodes have been fused one of the fused nodes can be removed*/
       this.remove_fused_node()
-      /*updates the rest of the vertices within the graph to reflect newly created nodes, note currently n^2 operation*/
+      // /*updates the rest of the vertices within the graph to reflect newly created nodes, note currently n^2 operation*/
       this.update_the_graph()
     }
   }
@@ -33,7 +32,7 @@ class Graph {
   }
 
   combine_the_nodes() {
-    this.node_for_fusion.node += this.vertex_for_fusion
+    this.node_for_fusion.node += `_${this.vertex_for_fusion}`
     this.node_for_fusion.vertices = this.node_for_fusion.vertices.concat(find_pair_for_fusing(this.node_pairs, this.vertex_for_fusion))
   }
 
@@ -86,8 +85,7 @@ function identify_for_fusion(node_pairs) {
 }
 
 function find_pair_for_fusing(node_array, vertex) {
-  let node = node_array.find((node) => node.node === vertex)
-  return node.vertices
+  return node_array.find((node) => node.node === vertex).vertices
 } 
 
 module.exports = Graph

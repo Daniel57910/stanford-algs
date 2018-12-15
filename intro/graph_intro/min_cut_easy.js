@@ -13,15 +13,17 @@ for (let i = 0; i < keys.length; i++) {
 
 
 var maximum_cuts = Math.pow(2, graph.original_node_pairs.length) - 1
+var runs = Math.pow(graph.original_node_pairs.length, 2)
+graph.fuse()
 
-for (i in graph.original_node_pairs) {
-  graph.fuse()
-  if (maximum_cuts > graph.calculate_num_cuts()) {
-    maximum_cuts = graph.calculate_num_cuts()
-  }
-}
+// for (let i = 0; i < runs; i++) {
+//   graph.fuse()
+//   if (maximum_cuts > graph.calculate_num_cuts()) {
+//     maximum_cuts = graph.calculate_num_cuts()
+//   }
+// }
 
-console.log(`minimum cut of the graph = ${maximum_cuts}`)
+// console.log(`minimum cut of the graph = ${maximum_cuts}`)
 
 
 

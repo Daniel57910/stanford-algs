@@ -52,8 +52,8 @@ class Graph {
   } 
 
   calculate_num_cuts() {
-    let fused_node = this.node_pairs[0].node.replace(/[^A-Z]/gi, '').split("")
-    let fused_opposite_node = this.node_pairs[1].node.replace(/[^A-Z]/gi, '').split("")
+    let fused_node = this.node_pairs[0].node.split("_")
+    let fused_opposite_node = this.node_pairs[1].node.split("_")
     let count = 0
     for (let node of fused_node) {
       for (let vertex of fused_opposite_node) {
@@ -72,7 +72,7 @@ function crosses_the_border(node_array, node, vertex) {
 
 function update_additional_vertices(vertex_array, fused_node) {
   for (let i in vertex_array) {
-    if (fused_node.includes(vertex_array[i]) || vertex_array[i].includes(fused_node)) {
+    if (fused_node.includes(vertex_array[i])) {
       vertex_array[i] = fused_node
     }
   }

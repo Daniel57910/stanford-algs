@@ -53,6 +53,22 @@ class Graph {
       this.node_pairs[i].vertices = update_additional_vertices(this.node_pairs[i].vertices, this.node_for_fusion.node)
     }
   } 
+
+  calculate_num_cuts() {
+    let fused_node = this.node_pairs[0].node
+    let fused_opposite_node = this.node_pairs[1].node
+    let count = 0
+    console.log(`${fused_node} => ${fused_opposite_node}`)
+    for (let node of fused_node) {
+      for (let vertex of fused_opposite_node) {
+        let original = this.original_node_pairs.find((node) => node.node === vertex).vertices.join("")
+        if (original.includes(node)) {
+          count++
+        }
+      }
+    }
+    return count
+  }
 }
 
 function update_additional_vertices(vertex_array, fused_node) {

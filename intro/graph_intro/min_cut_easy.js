@@ -11,5 +11,6 @@ for (let i = 0; i < keys.length; i++) {
   graph.add_to_graph(pair)
 }
 
-graph.fuse()
 
+graph.fuse()
+console.log(graph.calculate_num_cuts())

@@ -3,26 +3,24 @@ const Pair = require("./pair")
 class Graph {
 
   constructor() {
-    this.original_node_pairs = []
+    this.node_pairs = []
   }
 
   add_to_graph(pair) {
-    this.original_node_pairs.push(pair)
+    this.node_pairs.push(pair)
   }
 
   fuse() {
     /*used to ensure the original state of the array does not change */
-    this.node_pairs = this.original_node_pairs.map((a) => new Pair(a.node, [...a.vertices]))
+    this.node_pairs
     while (this.node_pairs.length > 2) {
       this.find_the_nodes()
-      /*combines the nodes and concatenates their newly shared vertices */
       this.combine_the_nodes()
-      // /*removes self loops */
       this.remove_the_vertex()
-      // /*as nodes have been fused one of the fused nodes can be removed*/
       this.remove_fused_node()
-      // /*updates the rest of the vertices within the graph to reflect newly created nodes, note currently n^2 operation*/
-      this.update_the_graph()
+      debugger;
+      // this.update_the_graph()
+      // debugger;
     }
   }
 
@@ -32,13 +30,13 @@ class Graph {
   }
 
   combine_the_nodes() {
-    this.node_for_fusion.node += `_${this.vertex_for_fusion}`
+    this.node_for_fusion.node.push(this.vertex_for_fusion)
     this.node_for_fusion.vertices = this.node_for_fusion.vertices.concat(find_pair_for_fusing(this.node_pairs, this.vertex_for_fusion))
   }
 
   remove_the_vertex() {
-    this.node_for_fusion.vertices = [...(new Set(this.node_for_fusion.vertices.map((item) => item)))]
-    this.node_for_fusion.vertices = this.node_for_fusion.vertices.filter((vertex) => !this.node_for_fusion.node.includes(vertex))
+    this.node_for_fusion.vertices = [...(new Set(this.node_for_fusion.vertices.map((vertex => vertex))))]
+    .filter((vertex) => !this.node_for_fusion.node.includes(vertex))
   }
   
   remove_fused_node() {
@@ -52,9 +50,7 @@ class Graph {
   } 
 
   calculate_num_cuts() {
-    let fused_node = this.node_pairs[0].node.split("_")
-    let fused_opposite_node = this.node_pairs[1].node.split("_")
-    let count = 0
+    let fused_node = this.node_pairs[0].node.split("_"), fused_opposite_node = this.node_pairs[1].node.split, count = 0
     for (let node of fused_node) {
       for (let vertex of fused_opposite_node) {
         if (crosses_the_border(this.original_node_pairs, node, vertex)) {
@@ -72,7 +68,7 @@ function crosses_the_border(node_array, node, vertex) {
 
 function update_additional_vertices(vertex_array, fused_node) {
   for (let i in vertex_array) {
-    if (fused_node.includes(vertex_array[i])) {
+    if (fused_node.split("_").includes(vertex_array[i])) {
       vertex_array[i] = fused_node
     }
   }
@@ -89,7 +85,8 @@ function identify_for_fusion(node_pairs) {
 }
 
 function find_pair_for_fusing(node_array, vertex) {
-  return node_array.find((node) => node.node === vertex).vertices
+  let a = node_array.find((node) => node.node.includes(vertex)).vertices
+  return a
 } 
 
 module.exports = Graph

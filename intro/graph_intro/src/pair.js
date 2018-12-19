@@ -1,6 +1,10 @@
 class Pair {
-  constructor(node, vertices) {
-    this.node = node
+  constructor() {
+    this.node = []
+    this.vertices
+  }
+  create(node, vertices) {
+    this.node.push(node)
     this.vertices = vertices
   }
 }
